@@ -1,0 +1,6 @@
+CREATE DEFINER=`ispp4110`@`%` TRIGGER `product_AFTER_UPDATE` AFTER UPDATE ON `product` FOR EACH ROW BEGIN
+	IF NEW.PRICE<>OLD.PRICE THEN
+		INSERT INTO price_log
+        VALUES(default, new.id, old.price, now(), user());
+	END IF;
+END

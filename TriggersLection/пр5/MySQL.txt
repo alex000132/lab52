@@ -1,0 +1,5 @@
+CREATE DEFINER=`ispp4110`@`%` TRIGGER `product_BEFORE_INSERT` BEFORE INSERT ON `product` FOR EACH ROW BEGIN
+IF new.price IS NULL THEN
+	SET new.price =0;
+END IF;
+END

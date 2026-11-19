@@ -1,0 +1,4 @@
+CREATE DEFINER=`ispp4110`@`%` TRIGGER `category_AFTER_DELETE` AFTER DELETE ON `category` FOR EACH ROW BEGIN
+INSERT INTO `deleted_category`(id, name, parent_id)
+VALUES(old.id,old.name,old.parent_id);
+END
